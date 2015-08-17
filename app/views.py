@@ -102,8 +102,8 @@ def apply():
             xy = gmod
         if g.user.div == 'Minecraft':
             xy = mc
-        if g.user.div == 'Space Engineers':
-            xy = se
+        # if g.user.div == 'Space Engineers':
+        #     xy = se
         if g.user.div == 'Public Relations':
             xy = pr
 
@@ -185,6 +185,7 @@ def create_or_login(response):
     g.user = User.get_or_create(match.group(1))
     steamdata = get_steam_userinfo(g.user.steam_id)
     g.user.nickname = steamdata['personaname']
+    g.user.admin = 0
     db_session.commit()
 
     session['user_id'] = g.user.user_id
