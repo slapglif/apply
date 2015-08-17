@@ -1,0 +1,107 @@
+{% extends 'homepage/layout.html' %}
+{% block content %}
+
+		<div class="container no-padding">
+			<div class="page_header no-margin">
+				<div class="col-lg-12">
+					<h1>Search Members</h1>
+				</div>
+			</div>
+			<div class="container main-content no-padding">
+				<div class="row row-fluid">
+					<div class="col-lg-12 col-md-12">
+						<div id="buddypress">
+							<div id="members-directory-form" class="dir-form">
+								<div class="row no-margin">
+									<div class="col-md-7 no-padding">
+										<div class="item-list-tabs" role="navigation">
+											<ul>
+												<li class="selected" id="members-all">
+													<a href="./members.html">All Members <span>149</span></a>
+												</li>
+											</ul>
+										</div>
+										<div id="members-dir-search" class="dir-search">
+											<form id="search-members-form">
+												<label><input name="s" id="members_search" placeholder="Search Members..." type="text"></label>
+												<input id="members_search_submit" name="members_search_submit" value="Search" type="submit">
+											</form>
+										</div>
+									</div>
+									<div class="col-md-12 no-padding">
+										<div class="item-list-tabs" id="subnav" role="navigation">
+											<ul>
+												<li id="members-order-select" class="last filter">
+													<label for="members-order-by">Order By:</label>
+													<select id="members-order-by">
+														<option value="active">Last Active</option>
+														<option value="newest">Newest Registered</option>
+														<option value="alphabetical">Alphabetical</option>
+													</select>
+												</li>
+											</ul>
+										</div>
+									</div>
+								</div>
+								<div id="members-dir-list" class="members dir-list">
+									<div id="pag-top" class="pagination">
+										<div class="pag-count" id="member-dir-count-top">
+											Viewing 1 - 20 of 149 active members
+										</div>
+										<div class="pagination-links">
+											<span class="page-numbers current">1</span>
+											<a class="page-numbers" href="./members.html">2</a>
+											<span class="page-numbers dots">...</span>
+											<a class="page-numbers" href="./members.html">8</a>
+											<a class="next page-numbers" href="./members.html">&rarr;</a>
+										</div>
+									</div>
+									<div class="g-content">
+										<ul id="members-list" class="item-list">
+											{% if uslz %}
+
+											{%  for users in uslz %}
+												{% if "xTcR" in users.nickname %}
+											<li>
+												<div class="item-avatar">
+													<a href="/roster/{{ users.steam_id }}"><img src="/static/blackfyre/images/1.jpg" alt="" class="avatar" height="50" width="50"></a>
+												</div>
+												<div class="item">
+													<div class="item-title">
+														<a href=/roster/{{ users.steam_id }}">{{ users }}</a>
+														<div class="item-meta"><span class="activity">Rank: {{ users.rank }}</span></div>
+													</div>
+												</div>
+												<div class="action">
+												</div>
+												<div class="clear"></div>
+											</li>
+												{% endif %}
+											{% endfor %}
+										{% endif %}
+
+										</ul>
+										<div id="pag-bottom" class="pagination">
+											<div class="pag-count" id="member-dir-count-bottom">
+												Viewing 1 - 20 of 149 active members
+											</div>
+											<div class="pagination-links" id="member-dir-pag-top">
+												<span class="page-numbers current">1</span>
+												<a class="page-numbers" href="./members.html">2</a>
+												<span class="page-numbers dots">...</span>
+												<a class="page-numbers" href="./members.html">8</a>
+												<a class="next page-numbers" href="./members.html">&rarr;</a>
+											</div>
+										</div>
+										<div class="clearfix"></div>
+									</div>
+								</div>
+							</div>
+							<div class="clear"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

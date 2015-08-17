@@ -1,0 +1,165 @@
+{% extends "apps/layout.html" %}
+{% block content %}
+    <link href="/static/css/screen.css" rel="stylesheet">
+        <!-- /Background container -->
+
+        <!-- Main content -->
+        <div class="content">
+
+
+            <!-- Countdown -->
+            <div class="countdown" id="countdown">
+                <div class="container">
+                    <div class="row">
+                        <div class="countdown-item col-sm-3 col-xs-6">
+                            <div class="countdown-number" id="countdown-days"></div>
+                            <div class="countdown-label">days</div>
+                        </div>
+
+                        <div class="countdown-item col-sm-3 col-xs-6">
+                            <div class="countdown-number" id="countdown-hours"></div>
+                            <div class="countdown-label">hours</div>
+                        </div>
+
+                        <div class="countdown-item col-sm-3 col-xs-6">
+                            <div class="countdown-number" id="countdown-minutes"></div>
+                            <div class="countdown-label">minutes</div>
+                        </div>
+
+                        <div class="countdown-item col-sm-3 col-xs-6">
+                            <div class="countdown-number" id="countdown-seconds"></div>
+                            <div class="countdown-label">seconds</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /Countdown -->
+<p>&nbsp;</p>
+
+                <div class="row">
+
+
+                        <!-- Subscription form -->
+                    <form action="" class="subscription-form" id="subscription-form" method="post">
+                        <div class="row">
+                        <div class="col-md-6">
+
+
+
+
+
+                                    <p>Enter your information:</p>
+
+                                    {{ form.hidden_tag() }}
+                                    {% if g.user.ptype == False %}
+
+                                    <ul>
+
+                                        <li>
+                                         {{ form.email(class='subscription-form-email form-control',placeholder='Email Address', style='text-align:left; float:left;') }}
+                                          {% for error in form.email.errors %}
+                                            <span style="color: red;">[{{ error }}]</span>
+                                          {% endfor %}
+                                        </li>
+                                        <li>
+                                        {{ form.team(class='subscription-form-email form-control',placeholder='Team Name', style='text-align:left; float:left;') }}
+                                          {% for error in form.team.errors %}
+                                            <span style="color: red;">[{{ error }}]</span>
+                                          {% endfor %}
+                                        </li>
+                                        <li>
+                                        {{ form.website(class='subscription-form-email form-control',placeholder='Team Website', style='text-align:left; float:left;') }}
+                                          {% for error in form.website.errors %}
+                                            <span style="color: red;">[{{ error }}]</span>
+                                          {% endfor %}<br>
+                                        </li>
+                                        <li>
+                                        {{ form.captain(class='subscription-form-email form-control',placeholder='Team Captain (if other than you)', style='text-align:left; float:left;') }}
+                                          {% for error in form.website.errors %}
+                                            <span style="color: red;">[{{ error }}]</span>
+                                          {% endfor %}<br>
+                                        </li>
+                                    </ul>
+
+
+
+                                    </div>
+
+
+
+
+
+
+                                <div class="col-md-6">
+                                <p>Enter your Roster:</p>
+
+                                    <ul>
+
+                                        <li>
+                                         {{ form.member1(class='subscription-form-email form-control',placeholder='Member 1', style='text-align:left; float:left;') }}
+                                          {% for error in form.email.errors %}
+                                            <span style="color: red;">[{{ error }}]</span>
+                                          {% endfor %}
+                                        </li>
+                                        <li>
+                                        {{ form.member2(class='subscription-form-email form-control',placeholder='Member 2', style='text-align:left; float:left;') }}
+                                          {% for error in form.team.errors %}
+                                            <span style="color: red;">[{{ error }}]</span>
+                                          {% endfor %}
+                                        </li>
+                                        <li>
+                                        {{ form.member3(class='subscription-form-email form-control',placeholder='Member 3', style='text-align:left; float:left;') }}
+                                          {% for error in form.website.errors %}
+                                            <span style="color: red;">[{{ error }}]</span>
+                                          {% endfor %}<br>
+                                        </li>
+                                        <li>
+                                        {{ form.member4(class='subscription-form-email form-control',placeholder='Member 4', style='text-align:left; float:left;') }}
+                                          {% for error in form.website.errors %}
+                                            <span style="color: red;">[{{ error }}]</span>
+                                          {% endfor %}<br>
+                                        </li>
+                                    </ul>
+
+
+                                </div>
+                            <p>&nbsp;</p>
+
+
+
+                                        <div align="center">
+                                            <span class="input-group-btn" >
+                                                {{ form.submit(class="subscription-form-submit btn", type="submit", value="Enter Now!") }}
+                                            </span>
+                                        </div>
+
+
+
+
+
+
+                                {% else %}
+                                    <ul>
+
+                                        <li>
+                                         {{ form.email(class='subscription-form-email form-control',placeholder='Email Address', style='text-align:left; float:left;') }}
+                                          {% for error in form.email.errors %}
+                                            <span style="color: red;">[{{ error }}]</span>
+                                          {% endfor %}
+                                        </li>
+                                    </ul>
+
+
+
+
+                            <p>&nbsp;</p>
+                            <span class="input-group-btn">
+
+                                {{ form.submit(class="subscription-form-submit btn", type="submit", value="Enter Now!") }}
+                            </span>
+
+                            {% endif %}
+
+   </form>
+                    </div><!-- /Subscription form -->
+{% endblock %}

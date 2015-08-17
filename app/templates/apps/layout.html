@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title>Apply to Join</title>
+        <link href="/favicon.ico" type="image/x-icon" rel="icon" /><link href="/favicon.ico" type="image/x-icon" rel="shortcut icon" /><meta name="description" content="Fill out an application" /><meta name="og:description" content="Fill out an application" /><link href="https://d1p84xostbzulx.cloudfront.net/v3.5.1/v-dc49a/img/" rel="apple-touch-icon" /><link href="https://d1p84xostbzulx.cloudfront.net/v3.5.1/v-dc49a/img/" rel="apple-touch-icon" size="76x76" /><link href="https://d1p84xostbzulx.cloudfront.net/v3.5.1/v-dc49a/img/" rel="apple-touch-icon" size="120x120" /><link href="https://d1p84xostbzulx.cloudfront.net/v3.5.1/v-dc49a/img/" rel="apple-touch-icon" size="152x152" /><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Montserrat:400,700" />
+    <link rel="stylesheet" type="text/css" href="/static/css/fonts.css" />
+    <link rel="stylesheet" type="text/css" href="https://d1p84xostbzulx.cloudfront.net/v3.5.1/v-dc49a/css/bootstrap-3.css" />
+   <link rel="stylesheet" type="text/css" href="/static/css/laat.css" />
+    <link rel="stylesheet" type="text/css" href="/static/css/olark.css" />
+    <script type="text/javascript" src="//code.jquery.com/jquery.js"></script><script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script><script type="text/javascript" src="//maps.googleapis.com/maps/api/js?v=3&key=AIzaSyDX_ntFHmQwJZU-T7ieVSfOXElAqTb7onU&amp;sensor=false&amp;libraries=places"></script><script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script><script type="text/javascript" src="https://d1p84xostbzulx.cloudfront.net/v3.5.1/v-dc49a/js/profile.js"></script><script type="text/javascript" src="https://d1p84xostbzulx.cloudfront.net/v3.5.1/v-dc49a/js/bootstrap3.js"></script><script type="text/javascript" src="https://d1p84xostbzulx.cloudfront.net/v3.5.1/v-dc49a/js/idlboot3.js"></script><script type="text/javascript" src="/static/js/cms.js"></script><!--// Google Analytics //-->
+
+   <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+
+</head>
+<body>
+
+
+ <div class="top-wrapper">
+            <div class="container">
+                <!-- Static navbar -->
+                <nav class="navbar">
+                    <div class="container-fluid">
+                        <div class="navbar-header header">
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                                <span class="sr-only">Toggle navigation</span>
+<!--
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+-->
+                           MENU
+                            </button>
+                            <a class="navbar-brand" href="#"><img src="http://bans.xtcr.net/images/logos/sb1.png" class="img-responsive" alt=""></a>
+                        </div>
+                        <div id="navbar" class="navbar-collapse collapse">
+                            <ul class="nav navbar-nav navbar-right">
+                                 {% if not username %}{% else %}<li><a href="#"> Welcome {{ username }}</a></li>{% endif %}
+                                <li><a href="/apps"> Applications</a></li>
+                                <li><a href="/req"> Requirements</a></li>
+                                {%  if admin %}<li><a href="/admin/users/search"> Admin</a></li>{% endif %}
+                                {% if not username %}<li><a href="/login">  Sign in </a></li>{% else %}<li><a href="/logout"> Sign out </a></li>{% endif %}
+
+                            </ul>
+                        </div><!--/.nav-collapse -->
+                    </div><!--/.container-fluid -->
+                </nav>
+
+
+<!-- ClickTale Top part -->
+<script type="text/javascript">
+var WRInitTime=(new Date()).getTime();
+</script>
+
+{% block body %}{% endblock %}
+
+
+    </body>
+</html>

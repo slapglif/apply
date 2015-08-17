@@ -1,0 +1,138 @@
+{% extends 'apps/d_layout.html' %}
+{% block body %}
+{% if admin == 1 %}
+
+
+
+
+
+            <div class="panel panel-inverse" data-sortable-id="table-basic-4">
+                        <div class="panel-heading">
+
+                            <div class="panel-heading-btn">
+                            <form style="color: black;" action="/admin/users/search" method="POST">
+                              <input type="search" name="search">
+                              <input type="submit" value="Submit" class="" >
+                            </form>
+
+
+                            </div>
+                            <h4 class="panel-title">Users</h4>
+                        </div>
+                        <div class="panel-body">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Username</th>
+                                        <th>Division</th>
+
+                                        <th>Flag</th>
+                                        <th>Admin</th>
+                                        <th>Vote</th>
+                                        <th>Set Div</th>
+                                        <th>Set Rank</th>
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                   {% if uslz %}
+
+                                       {% for users in uslz %}
+                                    <tr>
+
+                                       <td>
+                                            {{ users }}
+                                        </td>
+                                        <td>
+                                            <form action="/admin/users/search" method="POST">
+                                            <button name="divbtn" type="submit" value="{{ users.div }}" class="{% if users.div == 'Counter-Strike' %}btn btn-success{% elif users.div == 'Team Fortress 2' %}btn btn-primary{% elif users.div == 'Insurgency' %}btn btn-warning{% elif users.div == 'Space Engineers' %}btn btn-inverse{% elif users.div == 'Minecraft' %}btn btn-danger{% elif users.div == 'Public Relations' %}btn btn-white{% endif %}">{{ users.div }}</button>
+                                            </form>
+                                        </td>
+                                        <td>
+                                            <form action="/admin/users" method="POST">
+                                            <button name="{% if users.flag == '1' %}modbtn{% elif users.flag == '2' %}rmmbtn{% endif %}" value="{{users.steam_id}}" type="submit" class="{% if users.flag == '1' %}btn btn-info{% elif users.flag == '2' %}btn btn-inverse{% endif %}">{% if users.flag == '1' %}Make Moderator{% elif users.flag == '2' %}Remove Moderator{% endif %}</button>
+                                            </form>
+                                        </td>
+                                        <td>
+                                            <form action="/admin/users" method="POST">
+                                            <button name="{% if users.admin == 0 %}adadm{% elif users.admin == None %}adadm{% elif users.admin == 1 %}rmadm{% endif %}" value="{{users.steam_id}}" type="submit" class="{% if users.admin == 0 %}btn btn-info{% elif users.admin == None %}btn btn-info{% elif users.admin == 1 %}btn btn-inverse{% endif %}">{% if users.admin == None %}Make Admin{% elif users.admin == 0 %}Make Admin{% elif users.admin == 1 %}Remove Admin{% endif %}</button>
+                                            </form>
+                                        </td>
+                                        <td>
+                                            <form action="/admin/users" method="POST">
+                                            <button name="{% if users.vflag == 0 %}advt{% elif users.vflag == None %}advt{% elif users.vflag == 1 %}rmvt{% endif %}" value="{{users.steam_id}}" type="submit" class="{% if users.vflag == 0 %}btn btn-info{% elif users.vflag == None %}btn btn-info{% elif users.vflag == 1 %}btn btn-inverse{% endif %}">{% if users.vflag == None %}Allow Voting{% elif users.vflag == 0 %}Allow Voting{% elif users.vflag == 1 %}Disallow Voting{% endif %}</button>
+                                            </form>
+                                        </td>
+                                        <td>
+                                        <form action="/admin/users" method="post" name="dd1">
+                                        <select onchange="this.form.submit()" name="Inputs" id="Inputs" class="btn btn-success dropdown-toggle">
+                                            <option id="" label="" value="">Edit</option>
+                                            <option id="1" label="Team Fortress 2" value="{{users.steam_id}}/Team Fortress 2"></option>
+                                            <option id="2" label="Insurgency" value="{{users.steam_id}}/Insurgency"></option>
+                                            <option id="3" label="Counter-Strike" value="{{users.steam_id}}/Counter-Strike"></option>
+                                            <option id="4" label="Garrys Mod" value="{{users.steam_id}}/Garrys Mod"></option>
+                                            <option id="5" label="Minecraft" value="{{users.steam_id}}/Minecraft"></option>
+                                            <option id="6" label="Space Engineers" value="{{users.steam_id}}/Space Engineers"></option>
+                                            <option id="19" label="BattleField" value="{{users.steam_id}}/Battlefield"></option>
+                                            <option id="19" label="Public Relations" value="{{users.steam_id}}/Battlefield"></option>
+                                            <option id="20" label="Clan Wide" value="{{users.steam_id}}/Clan Wide"A></option>
+
+                                        </select>
+                                        </form>
+                                        </td>
+                                        <td>
+                                        <form action="/admin/users" method="post" name="dd2">
+                                        <select name="Inputs2" onchange="this.form.submit()" id="Inputs2" class="btn btn-success dropdown-toggle">
+
+                                            <option id="" label="" value="">Edit</option>
+                                            <option id="37" label="Recruit" value="{{users.steam_id}}/L1"></option>
+                                            <option id="7" label="L1" value="{{users.steam_id}}/L1"></option>
+                                            <option id="8" label="L2" value="{{users.steam_id}}/L2"></option>
+                                            <option id="9" label="L3" value="{{users.steam_id}}/L3"></option>
+                                            <option id="10" label="L4" value="{{users.steam_id}}/L4"></option>
+                                            <option id="11" label="JO" value="{{users.steam_id}}/JO"></option>
+                                            <option id="12" label="Officer" value="{{users.steam_id}}/Officer"></option>
+                                            <option id="13" label="ADL" value="{{users.steam_id}}/ADL"A></option>
+                                            <option id="14" label="DL" value="{{users.steam_id}}/DL"A></option>
+                                            <option id="15" label="Clan Wide" value="{{users.steam_id}}/Clan Wide"A></option>
+                                            <option id="15" label="Co-Leader" value="{{users.steam_id}}/Clan Wide"A></option>
+                                            <option id="15" label="Leader" value="{{users.steam_id}}/Clan Wide"A></option>
+
+
+                                        </select>
+                                        </form>
+                                        </td>
+                                   </tr>
+
+
+
+                                   {% endfor %}
+                                    {% endif %}
+
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+
+
+
+
+{% for choice in cat %}
+
+{% endfor %}
+
+
+{% else %}
+
+<div align="center">
+
+    <a class="landing-sign btn-main btn-sell btn-block btn btn-lg" href="/login" role="button"><i class="fa fa-steam"></i> You must be an admin to use this feature!</a>
+
+</div>
+
+
+{% endif %}
+
+{% endblock %}

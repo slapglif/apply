@@ -1,0 +1,92 @@
+{% extends "apps/d_layout.html" %}
+{% block body %}
+
+<div id="content" class="content">
+<div class="row">
+<div class="panel panel-inverse" data-sortable-id="table-basic-4">
+    <div class="panel-heading">
+        <div class="panel-heading-btn">
+            <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-default" data-click="panel-expand"><i class="fa fa-expand"></i></a>
+            <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-success" data-click="panel-reload"><i class="fa fa-repeat"></i></a>
+            <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-warning" data-click="panel-collapse"><i class="fa fa-minus"></i></a>
+            <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-danger" data-click="panel-remove"><i class="fa fa-times"></i></a>
+        </div>
+        <h4 class="panel-title">Application</h4>
+    </div>
+    <div class="panel-body">
+        <div class="content container-fluid">
+
+
+{% if gogo %}
+
+
+                                    <dl class="">
+                                    <dt>Username:</dt>
+                                    <dd>{{ gogo }}</dd>
+                                </dl>
+                                 <dl class="">
+                                    <dt>Division</dt>
+                                    <dd>{{ gogo.div }}</dd>
+                                </dl>
+                                <dl class="">
+                                    <dt>Rank</dt>
+                                    <dd>{{ gogo.rank }}</dd>
+                                </dl>
+
+
+
+
+ <dt>Set Division</dt>
+                                    <form action="/users/{{gogo.steam_id}}" method="post" name="dd1">
+                                        <select onchange="this.form.submit()" name="Inputs" id="Inputs" class="btn btn-success dropdown-toggle">
+                                            {% for choice in cat %}
+                                            <option id="1" label="{{choice}}" value="{{gogo.steam_id}}/{{choice}}"></option>
+                                            {% endfor %}
+                                        </select>
+                                        </form>
+<br>
+ <dt>Set Rank</dt>
+                                        <form action="/users" method="post" name="dd2">
+                                        <select onchange="this.form.submit()" name="Inputs2" id="Inputs2" class="btn btn-success dropdown-toggle">
+                                            {% for choice in cat2 %}
+                                            <option id='2' label="{{choice}}" value="{{gogo.steam_id}}/{{choice}}"></option>
+                                            {% endfor %}
+                                        </select>
+                                        </form>
+
+
+
+
+</div>
+    </div>
+    </div>
+
+
+
+<p>&nbsp;</p>
+
+    <a href="/users"><button class="btn btn-danger">Go back to Users</button></a>
+
+
+
+    {% endif %}
+
+{% endblock %}
+
+
+
+
+<script src="/static/assets/plugins/jquery/jquery-1.9.1.min.js"></script>
+<script>
+
+
+
+$( document ).ready(function() {
+    $('#Inputs').attr('label', 'Select Option');
+    });
+$( document ).ready(function() {
+    $('#Inputs').change(function() {
+        this.form.submit();
+        )}
+    )}
+</script>

@@ -1,0 +1,340 @@
+
+{% extends "homepage/layout.html" %}
+{% block content %}
+
+            <div class="container main-content no-padding">
+            <div class="row row-fluid">
+                <div class="col-lg-12 col-md-12">
+                    <div id="buddypress">
+
+    <h1 class="text-center margin-top-60 margin-bottom-30"><span class="text-info">Member</span> application</h1>
+    {% if not username %}
+    <p class="text-center lead text-gray margin-bottom-45">
+        Looking to join the clan? make sure you understand what is required!<br>
+        You can see more information about the requirements<a href="/req" class="text-info"> here</a>.
+    </p>
+    {% endif %}
+
+
+<form action="{{ url_for('apply') }}" id="UserApplyForm" enctype="multipart/form-data" method="post" accept-charset="utf-8"><div style="display:none;"><input type="hidden" name="_method" value="POST"/><input type="hidden" name="data[_Token][key]" value="7a35f2e152ae77598c62eaf1e4f16e8e381029e5" id="Token1004236894"/></div>    <div class="panel panel-steps">
+        {% if username %}
+
+    {% if not email %}
+    <div class="panel-heading">
+            <p class="panel-title">Basic Information</p>
+        </div>
+        <div class="panel-body">
+
+            <div class="row">
+    <div class="col-md-6">
+        <div class="form-group required"><label for="" class="control-label">In-game name</label>
+
+            {{ form.ign(class="form-control input-lg input-gray", placeholder="IGN", maxlength="30", type="text", id="ign", required="required") }}
+            {% for error in form.email.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+
+        </div>    </div>
+    <div class="col-md-6">
+        <div class="form-group required"><label for="" class="control-label">Steam Community URL</label>
+            {{ form.community(class="form-control input-lg input-gray", placeholder="http://steamcommunity.com/id/kuro112/", type="text", id="community", required="required") }}
+                    {% for error in form.email.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </div>
+</div>
+                </div>
+                <div class="row">
+    <div class="col-md-6">
+        <div class="form-group required"><label for="" class="control-label">Email address</label>
+            {{ form.email(class="form-control input-lg input-gray", placeholder="Your email", maxlength="255", type="email", id="email", required="required") }}
+                     {% for error in form.email.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+
+        </div>    </div>
+    <div class="col-md-6">
+        <div class="form-group required"><label for="" class="control-label">Age</label>
+            {{ form.age(class="form-control input-lg input-gray", placeholder="14+ Minimum", type="text", id="name") }}
+                                 {% for error in form.email.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+
+        </div>    </div>
+</div>
+            <hr/>
+            <p class="form-legend">Tell us about your time in xTcR Servers</p>
+            <div class="row">
+
+<div class="col-md-6">
+<div class="form-group required"><label for="" class="control-label">Division you are applying for</label><select name="div" class="form-control input-lg input-gray" required="required" id="div">
+<option value="Insurgency" selected="selected">Insurgency</option>
+<option value="Team-Fortress 2">TF2</option>
+<option value="Counter-Strike">CS</option>
+<option value="Garrys Mod">GMOD</option>
+<option value="Space Engineers">Space Engineers</option>
+<option value="Minecraft">Minecraft</option>
+<option value="Public Relations">Public Relations</option>
+</select></div>    </div>
+    <div class="col-md-6">
+    <div class="form-group required"><label for="" class="control-label">Hours you can commit</label><select name="time" class="form-control input-lg input-gray" required="required" id="">
+<option value="1" selected="selected">0-2</option>
+<option value="2">3-5</option>
+<option value="3">6-9</option>
+<option value="4">10-15</option>
+<option value="5">15+</option>
+</select></div>              <div class="row">
+    <div class="col-md-6">
+     </div>    </div>
+    <div class="col-md-3 padding-reset">
+        <div class="text-success profileSlug" style="display: none;"><i class="icon icon-check"></i> <span class="text">is available</span></div>
+        <div class="text-error profileSlug" style="display: none;"><i class="icon icon-times"></i> <span class="text">is already taken</span></div>
+    </div>
+</div>            <div class="form-group margin-bottom-0 margin-top-20">
+    <label for="UserPrivate" class="control-label">Meeting agreement</label></div>
+<input type="hidden" name="data[User][private]" id="UserPrivate_" value="0"/><input type="checkbox" name="data[User][private]"  class="form-control required input-gray" value="1" required="required" id="UserPrivate"/><label for="UserPrivate">I will attempt to make every clan meeting possible <p><small class="muted">Meetings take place at 8PM CST every Sat.</small></p></label>            <hr/>
+
+            <p class="form-legend">Describe yourself and your skillset</p>
+            <div class="form-group required"><label for="" class="control-label">Bio</label><textarea name="bio" class="form-control input-lg input-gray" placeholder="Cut and paste any additional information. Remember you can always edit it later." cols="30" rows="6" required="required"></textarea></div>            <fieldset class="draggable margin-top-40" id="Disciplines">
+
+                <fieldset id="skills1" class="margin-top-40">
+    <div class="form-group required">
+        <label for="" class="control-label">Input your top skills that pay the bills:</label>        <input type="text" name="tags" id="singleFieldTags2" class="ignore"  placeholder="Art Director"/>
+        <div id="skills-tags">
+                    </div>
+        <div>
+            <input type="hidden" name="skills" class="force-validate" value="" required="" id="SkillSkill"/>        </div>
+            </div>
+</fieldset>
+
+
+            <hr>
+<div align="center">
+      {{ form.submit(class="btn btn-lg btn-danger", role="button") }}
+</div>
+
+
+
+
+
+
+
+ {% else %}
+
+                            <p class="text-center lead text-gray margin-bottom-15">
+        You already have an application pending!<br>
+        Application status: <span class="{% if username.status == 'Pending' %}label label-default{% elif username.status == 'Under Review' %}label label-warning{% elif username.status == 'Approved' %}label label-success{% elif username.status == 'Denied' %}label label-danger{% endif %}">{{ username.status }}</span> </p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    {% endif %}
+
+                        {% else %}
+<a class="landing-sign btn-main btn-sell btn-block btn btn-lg" href="/login" role="button"><i class="fa fa-steam"></i> You must be signed in to apply!</a>
+            {% endif %}
+</div>
+</div>
+
+    <script>
+        $("select").selectbox({
+            classSelector: 'sbSelector',
+            classOptions: 'sbOptions',
+            classToggleOpen: 'sbToggleOpen',
+            classToggle: 'sbToggle',
+            speed: 200,
+            onOpen: function (instance) {
+                $(instance.input.context).parent().find('.sbSelector').addClass('active');
+                //$(instance.input.context).parent().find('.sbOptions').css('max-height', '420px')
+            },
+            onClose: function (instance) {
+                setTimeout(function () {
+                    $(instance.input.context).parent().find('.sbSelector').removeClass('active');
+                    $(instance.input.context).valid();
+                }, instance.settings.speed);
+            }});
+        $(document).ready(function () {
+            $('#UserApplyForm').validate({
+                rules: {
+                    "data[User][pwd]": {
+                        required:true,
+                        minlength: 6
+                    },
+                    "data[User][url]": {
+                        required: true,
+                        url: true
+                    },
+                    "data[User][url_alt]": {
+                        url: true
+                    },
+                    "data[User][linked_in]": {
+                        domain: ['linkedin.com','LinkedIn']
+                    },
+                    "data[User][twitter]": {
+                        domain: ['twitter.com','Twitter']
+                    },
+                    "data[User][dribbble]": {
+                        domain: ['dribbble.com','Dribbble']
+                    },
+                    "data[User][behance]": {
+                        domain: ['behance.net','Behance']
+                    },
+                    disciplines: {
+                         dropMax: [3],                        dropRequired: true
+                    },
+                    industries: {
+                        dropRequired: true
+                    },
+                    tags: 'required'
+                },
+                messages: {
+                    "data[User][agree]": {
+                        required: 'You must check this field'
+                    }
+                }
+            });
+            $('.drag_row').on('click', '.drop', function(e){
+                setTimeout(function(){$(e.delegateTarget).find('input,textarea').valid();
+            },100)});
+            function setSlug(){
+                var name = '';
+                $('#UserApplyForm .select-buttons[name=disciplines]').rules("remove");
+                if($('#UserIsCompany0').is(':checked')){
+                    name = $('#UserFirstName').val() + $('#UserLastName').val();
+                    $('#UserApplyForm .select-buttons[name=disciplines]').rules("add", {dropMax: [3], dropRequired: true});
+                } else {
+                    name = $('#UserCompany').val();
+                    $('#UserApplyForm .select-buttons[name=disciplines]').rules("add", {dropRequired: true});
+                }
+                name = name.toLowerCase().replace(/[^a-z0-9]/gi,'');
+                if(name){
+                    $('#UserSlug').val(name).trigger('change').trigger('keyUp');
+                }
+            }
+            $('#UserApplyForm').on('change','#UserFirstName,#UserLastName,#UserIsCompany1,#UserIsCompany0,#UserCompany',setSlug);
+            $('#UserApplyForm').find('.help-block.has-error').each(
+                function(){
+                    $(this).parent().addClass('has-error');
+                    $(this).attr('for',$(this).parent().find('input').attr('id'));
+                    var self = $(this);
+                    setTimeout(function() { scrollToSection(self.parent())}, 1000);
+
+                }
+            )
+        });
+    </script>
+        <script>
+            var sampleTags = ["3D Cart","3D Modeling","Account Planning","Advertising","After Effects","AJAX","Ameri Commerce","Analytics","Android","Animation","Apps","Architecture","Art","Art Direction","Assisting","Back End","Big Cartel","Bigcommerce","Black and White","Blogger Outreach","Blogging","Brand Development","Branding","Broadcast","CAD","Celebrity","Character","Children","Cinematography","CMS","Comedic","Community Management","Concept Development","Conceptual","Consultant","Consumer Lifestyle","Copywriting","Core Commerce","Corporate","Costume Design","Creative Direction","Creative Strategy","Creative Technologist","Crisis Management","CSS","Design","Design Pattern Research","Digital","Digital Capture","Digital Displays","Digital Tech","Direct Marketing","Documentary","Dreamweaver","Drupal","Ecommerce","Editing","Editorial","Email","Email Marketing","Entertainment","EPK's","Ethnography","Event","Exhibition Design","Experiential","Explainer","Feature Length","Film","Financial","Flash","Food","Front end","Full Stack","Furniture","Game Design","Game Development","Graffiti","Graphic Design","Hair","Hair and Make Up","HTML","Humor","IA","Iconography","Illustration","In Store","Influencer","Information Architecture","Innovation","Integrated","Interaction","Interactive","Internal Communications","iOS","JavaScript","Jewelry","Journalism","Landscape","Large Format (digital)","Large Format (film)","LemonStand","Lifestyle","Lighting","Line Production","Live Event","Location","Logo","Low\/High Fidelity Prototyping","Macro","Magento","Make Up","Media Planning","Media Training","Medium Format (digital)","Medium Format (film)","Merchandising","Micro","Microblogging","Mobile","Motion Graphics","Music","Music Video","Naming","Narrative","Native Advertising","Night Life","OS Commerce","Out of Home","Outdoor","Packaging","Page Ranking","Pattern","Perl","Photo Illustration","Photojournalism","PHP","Physical Design","Point of Purchase","Portrait","Portraiture","Post Production","Post-processing","Powerpoint\/Keynote","Preditor","Presentations","Press Kits","Press Releases","Print","Product","Product Management","Product Placement","Production Design","Production Management","Project Management","Projection","Public Affairs","Python","Responsive","Retail","Retouching","RSS","Ruby On Rails","Run-n-Gun","Screenwriting","SEO","SEO\/SEM","Set Design","Shopify","Shorts","Sizzle","Social","Social CRM","Social Media","Social Media Management","Social Media Monitoring","Social Media Strategy","Speaking Opportunities","Speechwriting","Sports","Squarespace","Startups","Still Life","Storyboarding","Strategy","Street","Studio","Stunt","Styling","Styling and Costume Design","Tech","Technical","Technology","Textile","Touchscreen","Trade Shows","Translation","Travel","Tumblr","Typography","UI","UI Design","Underwater","User Behavior Research","UX","UX Design","VFX","Video Games","Video Seeding","Virtue Mart","Visual Design","Visual Merchandising","Volusion","Web Video","Wedding","Widgets","Wildlife","WordPress","xCart","Photoshop","Web development","Web Design","User Experience","Photography","Commercials","Video Production","Film Production","Writing","Business Development","Publishing","Television","Storytelling","banner","banners","banner ads","Product Photography"];
+            var filters = ["\\bahole","\\banus","\\bas+h[o0]le?s?","\\bas{2,}\\b","\\b(.\\B)*as{2,}\\b","\\bbas+t[ae]rds?","\\bb[i1](a)?[\\+t]che?s?","blow job","blowjob","but+hole","but+wipe","\\bc[o0]c?ks?","carpet munche?r?","\\bcawks?","\\bclit\\b","\\bcu?nts?z?\\b","[expletive]-?sucker","[ck]rap","\\b[ck]ums?\\b","d[4a]mn(ed|nit|it)?","\\bdic?k","dild[o0]s?","\\bdyke\\b","\\benema\\b","\\b((p\\s*h)|f)\\s*u(\\s*[ck])+(\\s*e?\\s*r\\s*s?)?(\\s*i\\s*n\\s*g)?","\\bfag+(et)?(ot)?(it)?s?z?\\b","fudge packer","g[o0][o0]k","\\bg(he|a|e)ys?z?","god-?\\[expletive\\]","w?h[oa0][oa0]r","\\bhe[l1]{2,}\\b","jack-?off","jerk-?off","ji[sz]im","ji[sz]+","\\blesb(ian|o)","sc?h[i1y]ts?z?e?","motherfucker","mothafucker","mothahfucker","n[i1]?g+e?u?o?i?r","pec?k+er","pe+n[ui1]+s+","\\bpol+ac?k?\\b","\\bpr[i1]c?k?\\b","\\bp[uo][sz]+[ie]y\\b","que+rs?z?\\b","re[ck]+tum","retard\\b","s[ck]ank","sc?hlong","\\bsemen\\b","\\btits?\\b","\\bturd\\b","\\bva[1jgi]+na\\b","vul+va","\\bw[o0]p\\b","wh[o0]+re?s?z?","fatass","s.o.b","nutsack","scrotum","b[0o]{2,}bs?","butt-pirate","\\bpiss(.\\B)*","wank(.\\B)*","\\bwh?op(.\\B)*"];
+            profileSkillsInit();
+        </script>
+        <script type="text/javascript" src="/static/scripts-build/require.js"></script>
+<script>
+    require.config({baseUrl: '/scripts-build'});
+</script>
+
+
+        <!--// AdRoll Retargeting Script -->
+    <script type="text/javascript">
+    adroll_adv_id = "IOGUSS5Z6ZEFVOTMKSQLX6";
+    adroll_pix_id = "2LYGA2S5YJGAXAU3EFCECK";
+    (function () {
+    var oldonload = window.onload;
+    window.onload = function(){
+       __adroll_loaded=true;
+       var scr = document.createElement("script");
+       var host = (("https:" == document.location.protocol) ? "https://s.adroll.com" : "http://a.adroll.com");
+       scr.setAttribute('async', 'true');
+       scr.type = "text/javascript";
+       scr.src = host + "/j/roundtrip.js";
+       ((document.getElementsByTagName('head') || [null])[0] ||
+        document.getElementsByTagName('script')[0].parentNode).appendChild(scr);
+       if(oldonload){oldonload()}};
+    }());
+    </script>
+
+    <!-- crazy egg -->
+    <script type="text/javascript">
+    setTimeout(function(){var a=document.createElement("script");
+    var b=document.getElementsByTagName("script")[0];
+    a.src=document.location.protocol+"//dnn506yrbagrg.cloudfront.net/pages/scripts/0020/6463.js?"+Math.floor(new Date().getTime()/3600000);
+    a.async=true;a.type="text/javascript";b.parentNode.insertBefore(a,b)}, 1);
+    </script>
+
+
+    <!-- ClickTale Bottom part -->
+
+    <script type='text/javascript'>
+    // The ClickTale Balkan Tracking Code may be programmatically customized using hooks:
+    //
+    //   function ClickTalePreRecordingHook() { /* place your customized code here */  }
+    //
+    // For details about ClickTale hooks, please consult the wiki page http://wiki.clicktale.com/Article/Customizing_code_version_2
+
+    document.write(unescape("%3Cscript%20src='"+
+    (document.location.protocol=='https:'?
+    "https://clicktalecdn.sslcs.cdngc.net/www02/ptc/3402d3bf-a75e-4e2f-b021-c19d63958746.js":
+    "http://cdn.clicktale.net/www02/ptc/3402d3bf-a75e-4e2f-b021-c19d63958746.js")+"'%20type='text/javascript'%3E%3C/script%3E"));
+    </script>
+
+    <!-- ClickTale end of Bottom part -->
+
+
+    <!-- Google Code for Remarketing Tag -->
+    <!--
+    Remarketing tags may not be associated with personally identifiable information or placed on pages related to sensitive categories. See more information and instructions on how to setup the tag on: http://google.com/ads/remarketingsetup
+    -->
+    <script type="text/javascript">
+    /* <![CDATA[ */
+    var google_conversion_id = 982854381;
+    var google_custom_params = window.google_tag_params;
+    var google_remarketing_only = true;
+    /* ]]> */
+    </script>
+    <script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js">
+    </script>
+    <noscript>
+    <div style="display:inline;">
+    <img height="1" width="1" style="border-style:none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/982854381/?value=0&amp;guid=ON&amp;script=0"/>
+    </div>
+    </noscript>
+
+
+    <!--// Twitter -->
+    <script>!function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if ( !d.getElementById(id) ) {
+                js = d.createElement(s);
+                js.id = id;
+                js.src = "//platform.twitter.com/widgets.js";
+                fjs.parentNode.insertBefore(js, fjs);
+            }
+        }(document, "script", "twitter-wjs");</script>
+    <!--// Facebook -->
+    <script>
+        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if ( d.getElementById(id) ) return;
+            js = d.createElement(s);
+            js.id = id;
+            js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&status=0&appId=1234567890123456";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+    </script>
+
+    <!-- analytics event tracking //-->
+    <script type="text/javascript" src="/static/js/event.tracking.js"></script>
+{% endblock %}
