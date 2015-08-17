@@ -1,0 +1,14 @@
+﻿
+/*---------------------------------------
+**   SECTION:  PRODUCTS             -----
+-----------------------------------------*/
+
+.products {
+	background: url(../images/product-bg.png) 50% 0 repeat;
+}
+.products .color-overlay {
+	background: #0071b3;
+	margin-top: -100px;
+	padding-top: 100px;
+	padding-bottom: 70px;
+}
