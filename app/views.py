@@ -172,7 +172,8 @@ def before_request():
     g.user = None
     print "test here"
     if 'user_id' in session:
-        g.user = User.query.get(session['user_id'])
+        print session['user_id']
+        #g.user = User.query.get(session['user_id'])
     else:
         print "test there"
 
