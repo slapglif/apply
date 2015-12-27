@@ -242,18 +242,13 @@ def ulist():
     return userlist3
 
 
-
-
-
-
-
 def divusl(xf):
     userlist = []
     userlist2 = []
     userlist3 = []
     for user2 in User.query.filter(User.email.isnot(None)):
         userlist2 += [user2]
-    for user1 in User.query.filter_by(admin=None):
+    for user1 in User.query.filter_by(admin='1'):
         if [user1][0].div == xf:
             userlist += [user1]
 
