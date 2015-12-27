@@ -111,12 +111,12 @@ def apply():
         if g.user.div == 'Public Relations':
             xy = pr
 
-        # try:
-        #     r = requests.get("http://108.61.149.51/1/info.php?div=%s&name=%s&steam_id=%s"%(xy,g.user.ign,g.user.steam_id))
-        #     print r
-        #     print r.url
-        # except:
-        #     print "Server Down"
+        try:
+            r = requests.get("http://192.151.156.250/1/info.php?div=%s&name=%s&steam_id=%s"%(xy,g.user.ign,g.user.steam_id))
+            print r
+            print r.url
+        except:
+            print "Server Down"
         output = render_template('apps/success.html',username=g.user,form=form)
 
     return output
