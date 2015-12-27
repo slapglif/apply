@@ -170,10 +170,11 @@ def logout():
 @app.before_request
 def before_request():
     g.user = None
+    print "test here"
     if 'user_id' in session:
         g.user = User.query.get(session['user_id'])
     else:
-        print "test"
+        print "test there"
 
 @open_id.after_login
 def create_or_login(response):
