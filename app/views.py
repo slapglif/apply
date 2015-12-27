@@ -184,6 +184,7 @@ def create_or_login(response):
     g.user = User.get_or_create(match.group(1))
     steamdata = get_steam_userinfo(g.user.steam_id)
     g.user.nickname = steamdata['personaname']
+    g.user.flag = '1'
     print "%s is admin %s is flag"%(g.user.admin,g.user.flag)
     db_session.commit()
 
