@@ -11,7 +11,6 @@ db = SQLAlchemy(app)
 db.init_app(app)
 engine = create_engine('sqlite:///app.db', convert_unicode=True)
 db_session = scoped_session(sessionmaker(autocommit=False,
-
                                          autoflush=False,
                                          bind=engine))
 Base = declarative_base()
