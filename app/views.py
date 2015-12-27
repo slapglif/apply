@@ -39,7 +39,11 @@ def index():
 
     if 'user_id' in session:
         g.user = User.query.get(session['user_id'])
-        output = render_template('apps/req.html',username=g.user,form=form,admin=g.user.admin)
+        if g.user.admin is not None:
+            output = render_template('apps/req.html',username=g.user,form=form,admin=g.user.admin)
+        else:
+            output = render_template('apps/index.html',username=g.user,form=form,admin=None)
+
 
     flash("errors")
     return output
@@ -74,6 +78,7 @@ def apply():
         g.user.voteno = 0
         g.user.voted = "0"
         g.user.flag = 1
+        g.user.admin = 0
         now = timenow()
         g.user.date = str(now)
 
