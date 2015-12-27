@@ -35,7 +35,6 @@ class User(Base):
             rv = User()
             rv.steam_id = steam_id
             db_session.add(rv)
-            db_session.close()
         return rv
 
     def __repr__(self):
