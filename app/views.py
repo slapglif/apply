@@ -36,6 +36,7 @@ def index():
     form = xForm()
 
     output = render_template('apps/index.html',username=g.user,form=form,admin=None)
+
     if 'user_id' in session:
         g.user = User.query.get(session['user_id'])
         output = render_template('apps/req.html',username=g.user,form=form,admin=g.user.admin)
@@ -89,7 +90,6 @@ def apply():
 
         drill(g.user.nickname,g.user.email)
         db_session.commit()
-        db_session.close()
 
 
         if g.user.div == 'Counter-Strike':
@@ -171,12 +171,13 @@ def logout():
     return redirect(open_id.get_next_url())
 
 
+
+
 @app.before_request
 def before_request():
     g.user = None
     if 'user_id' in session:
-        pass
-        # g.user = User.query.get(session['user_id'])
+        g.user = User.query.get(session['user_id'])
 
 @open_id.after_login
 def create_or_login(response):
@@ -385,7 +386,6 @@ def ap(ap):
         for user1 in User.query.filter_by(steam_id=x):
             [user1][0].status = "Under Review"
             db_session.commit()
-            db_session.close()
             ulsz = ulist()
             output = render_template('apps/app.html',username=g.user,form=form,uslz=ulsz,gogo=gogo,admin=admin,mod=mod,div=div,voted=voted)
     if request.form.get('aprbtn'):
@@ -393,7 +393,6 @@ def ap(ap):
         for user1 in User.query.filter_by(steam_id=x):
             [user1][0].status = "Approved"
             db_session.commit()
-            db_session.close()
             ulsz = ulist()
             output = render_template('apps/app.html',username=g.user,form=form,uslz=ulsz,gogo=gogo,admin=admin,mod=mod,div=div,voted=voted)
     if request.form.get('dnybtn'):
@@ -401,7 +400,6 @@ def ap(ap):
         for user1 in User.query.filter_by(steam_id=x):
             [user1][0].status = "Denied"
             db_session.commit()
-            db_session.close()
             ulsz = ulist()
             output = render_template('apps/app.html',username=g.user,form=form,uslz=ulsz,gogo=gogo,admin=admin,mod=mod,div=div,voted=voted)
 
@@ -417,7 +415,6 @@ def ap(ap):
             voted += [user1][0].nickname
             g.user.voted = voted
             db_session.commit()
-            db_session.close()
             ulsz = ulist()
             output = render_template('apps/app.html',username=g.user,form=form,uslz=ulsz,gogo=gogo,admin=admin,mod=mod,div=div,voted=voted)
     if request.form.get('voteno'):
@@ -432,7 +429,6 @@ def ap(ap):
             voted += [user1][0].nickname
             g.user.voted = voted
             db_session.commit()
-            db_session.close()
             ulsz = ulist()
             output = render_template('apps/app.html',username=g.user,form=form,uslz=ulsz,gogo=gogo,admin=admin,mod=mod,div=div,voted=voted)
 
@@ -495,7 +491,6 @@ def users():
         for user1 in User.query.filter_by(steam_id=div.split('/')[0]):
             [user1][0].div = div.rsplit('/')[1]
             db_session.commit()
-            db_session.close()
 
             output = render_template('apps/users.html',username=g.user,form=form,uslz=usl,admin=admin,cat=cat,cat2=cat2,div=[user1][0].div)
 
@@ -504,7 +499,6 @@ def users():
         for user1 in User.query.filter_by(steam_id=rnk.split('/')[0]):
             [user1][0].rank = rnk.rsplit('/')[1]
             db_session.commit()
-            db_session.close()
 
             output = render_template('apps/users.html',username=g.user,form=form,uslz=usl,admin=admin,cat=cat,cat2=cat2,div=[user1][0].div)
 
@@ -515,7 +509,6 @@ def users():
         for user1 in User.query.filter_by(steam_id=x):
             [user1][0].flag = 2
             db_session.commit()
-            db_session.close()
 
             output = render_template('apps/users.html',username=g.user,form=form,uslz=usl,admin=admin,cat=cat,cat2=cat2)
     if request.form.get('rmmbtn'):
@@ -523,7 +516,6 @@ def users():
         for user1 in User.query.filter_by(steam_id=x):
             [user1][0].flag = 1
             db_session.commit()
-            db_session.close()
 
             output = render_template('apps/user.html',username=g.user,form=form,uslz=usl,admin=admin,cat=cat,cat2=cat2)
     if request.form.get('adadm'):
@@ -531,7 +523,6 @@ def users():
         for user1 in User.query.filter_by(steam_id=x):
             [user1][0].admin = 1
             db_session.commit()
-            db_session.close()
 
             output = render_template('apps/users.html',username=g.user,form=form,uslz=usl,admin=admin,cat=cat,cat2=cat2)
     if request.form.get('rmadm'):
@@ -539,7 +530,7 @@ def users():
         for user1 in User.query.filter_by(steam_id=x):
             [user1][0].admin = 0
             db_session.commit()
-            db_session.close()
+
             output = render_template('apps/users.html',username=g.user,form=form,uslz=usl,admin=admin,cat=cat,cat2=cat2)
 
     if request.form.get("divbtn"):
@@ -561,7 +552,6 @@ def users():
         for user1 in User.query.filter_by(steam_id=x):
             [user1][0].vflag = 1
             db_session.commit()
-            db_session.close()
 
             output = render_template('apps/users.html',username=g.user,form=form,uslz=usl,admin=admin,cat=cat,cat2=cat2)
 
@@ -570,7 +560,6 @@ def users():
         for user1 in User.query.filter_by(steam_id=x):
             [user1][0].vflag = 0
             db_session.commit()
-            db_session.close()
 
             output = render_template('apps/users.html',username=g.user,form=form,uslz=usl,admin=admin,cat=cat,cat2=cat2)
 
