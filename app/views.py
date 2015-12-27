@@ -36,10 +36,9 @@ def index():
     form = xForm()
 
     output = render_template('apps/index.html',username=g.user,form=form,admin=None)
-    if g.user is not None:
-        if 'user_id' in session:
-            g.user = User.query.get(session['user_id'])
-            output = render_template('apps/req.html',username=g.user,form=form,admin=g.user.admin)
+    if 'user_id' in session:
+        g.user = User.query.get(session['user_id'])
+        output = render_template('apps/req.html',username=g.user,form=form,admin=g.user.admin)
 
     flash("errors")
     return output
