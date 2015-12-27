@@ -46,8 +46,6 @@ def index():
     return output
 
 
-
-
 @app.route('/apply', methods=['GET', 'POST'])
 def apply():
     form = xForm()
