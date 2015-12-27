@@ -133,9 +133,6 @@ def success():
     if 'user_id' in session:
         g.user = User.query.get(session['user_id'])
 
-
-
-
     output = render_template('apps/success.html',username=g.user)
 
     return output
@@ -170,13 +167,13 @@ def logout():
     return redirect(open_id.get_next_url())
 
 
-
-
 @app.before_request
 def before_request():
     g.user = None
     if 'user_id' in session:
         g.user = User.query.get(session['user_id'])
+    else:
+        print "test"
 
 @open_id.after_login
 def create_or_login(response):
