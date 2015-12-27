@@ -39,7 +39,7 @@ def index():
 
     if 'user_id' in session:
         g.user = User.query.get(session['user_id'])
-        if g.user.admin is not None:
+        if g.user:
             output = render_template('apps/req.html',username=g.user,form=form,admin=g.user.admin)
         else:
             output = render_template('apps/index.html',username=g.user,form=form,admin=None)
