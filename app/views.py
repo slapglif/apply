@@ -177,7 +177,7 @@ def logout():
 @app.before_request
 def before_request():
     g.user = None
-    if g.user:
+    if g.user is not None:
         if 'user_id' in session:
             g.user = User.query.get(session['user_id'])
 
