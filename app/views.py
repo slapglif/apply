@@ -171,14 +171,11 @@ def logout():
     return redirect(open_id.get_next_url())
 
 
-
-
 @app.before_request
 def before_request():
     g.user = None
-    if g.user is not None:
-        if 'user_id' in session:
-            g.user = User.query.get(session['user_id'])
+    if 'user_id' in session:
+        g.user = User.query.get(session['user_id'])
 
 @open_id.after_login
 def create_or_login(response):
