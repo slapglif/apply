@@ -186,7 +186,6 @@ def create_or_login(response):
     g.user.nickname = steamdata['personaname']
     print "%s is admin %s is flag"%(g.user.admin,g.user.flag)
     db_session.commit()
-    db_session.close()
 
     session['user_id'] = g.user.user_id
     output = redirect(open_id.get_next_url())
