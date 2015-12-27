@@ -232,7 +232,7 @@ def ulist():
     userlist3 = []
     for user2 in User.query.filter(User.email.isnot(None)):
         userlist2 += [user2]
-    for user1 in User.query.filter_by(admin=None):
+    for user1 in User.query.filter_by(admin='0'):
         userlist += [user1]
 
     for user3 in userlist:
@@ -248,7 +248,7 @@ def divusl(xf):
     userlist3 = []
     for user2 in User.query.filter(User.email.isnot(None)):
         userlist2 += [user2]
-    for user1 in User.query.filter_by(admin='1'):
+    for user1 in User.query.filter_by(admin='0'):
         if [user1][0].div == xf:
             userlist += [user1]
 
@@ -329,7 +329,7 @@ def ap(ap):
         userlist3 = []
         for user2 in User.query.filter(User.email.isnot(None)):
             userlist2 += [user2]
-        for user1 in User.query.filter_by(admin=None):
+        for user1 in User.query.filter_by(admin='0'):
             if [user1][0].date == xf:
                 userlist += [user1]
 
@@ -369,7 +369,7 @@ def ap(ap):
         userlist3 = []
         for user2 in User.query.filter(User.email.isnot(None)):
             userlist2 += [user2]
-        for user1 in User.query.filter_by(admin=None):
+        for user1 in User.query.filter_by(admin='0'):
             if [user1][0].status == sbt:
                 userlist += [user1]
 
