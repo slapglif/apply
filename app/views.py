@@ -175,7 +175,7 @@ def logout():
 def before_request():
     g.user = None
     if 'user_id' in session:
-        g.user = User.query.get(session['user_id'])
+        # g.user = User.query.get(session['user_id'])
 
 @open_id.after_login
 def create_or_login(response):
