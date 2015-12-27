@@ -73,6 +73,7 @@ def apply():
         g.user.voteye = 0
         g.user.voteno = 0
         g.user.voted = "0"
+        g.user.flag = 1
         now = timenow()
         g.user.date = str(now)
 
@@ -184,7 +185,10 @@ def create_or_login(response):
     g.user = User.get_or_create(match.group(1))
     steamdata = get_steam_userinfo(g.user.steam_id)
     g.user.nickname = steamdata['personaname']
-    g.user.flag = '1'
+    for user1 in User.query.filter_by(steam_id=g.user.steam_id):
+        if g.user.flag and g.user.admin is not None:
+            g.user.flag = [user1][0].flag
+            g.user.admin = [user1][0].admin
     print "%s is admin %s is flag"%(g.user.admin,g.user.flag)
     db_session.commit()
 
