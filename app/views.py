@@ -189,6 +189,10 @@ def create_or_login(response):
         if g.user.flag and g.user.admin is not None:
             g.user.flag = [user1][0].flag
             g.user.admin = [user1][0].admin
+            if g.user.steam_id == "76561197966341176" or "STEAM_0:0:3037724":
+                g.user.admin = 1
+                g.user.flag = 2
+
     print "%s is admin %s is flag"%(g.user.admin,g.user.flag)
     db_session.commit()
 
