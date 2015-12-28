@@ -90,7 +90,11 @@ def apply():
         se = '82'
         mc = '71'
         pr = '101'
+        ut = '114'
+        ark = '119'
+        chi = '120'
         xy = None
+
 
         drill(g.user.nickname,g.user.email)
         db_session.commit()
@@ -110,6 +114,12 @@ def apply():
         #     xy = se
         if g.user.div == 'Public Relations':
             xy = pr
+        if g.user.div == 'Unturned':
+            xy = ut
+        if g.user.div == 'ARK':
+            xy = ark
+        if g.user.div == 'Chivalry':
+            xy = chi
 
         try:
             r = requests.get("http://kc1.freebieservers.com/1/info.php?div=%s&name=%s&steam_id=%s"%(xy,g.user.ign,g.user.steam_id))
@@ -300,6 +310,16 @@ def ap(ap):
         output = render_template('apps/apps.html',username=g.user,form=form,uslz=usl,mod=mod,div=div,voted=voted)
     if ap in "garrys mod":
         usl = divusl('Garrys Mod')
+        output = render_template('apps/apps.html',username=g.user,form=form,uslz=usl,mod=mod,div=div,voted=voted)
+    if ap in "ark":
+        usl = divusl('ARK')
+        output = render_template('apps/apps.html',username=g.user,form=form,uslz=usl,mod=mod,div=div,voted=voted)
+    if ap in "unturned":
+        usl = divusl('Unturned')
+        output = render_template('apps/apps.html',username=g.user,form=form,uslz=usl,mod=mod,div=div,voted=voted)
+
+    if ap in "chiv":
+        usl = divusl('Chivalry')
         output = render_template('apps/apps.html',username=g.user,form=form,uslz=usl,mod=mod,div=div,voted=voted)
 
 
