@@ -555,6 +555,7 @@ def users():
         x = request.form.get('adadm')
         for user1 in User.query.filter_by(steam_id=x):
             [user1][0].admin = 1
+            g.user.admin = 1
             db_session.commit()
 
             output = render_template('apps/users.html',username=g.user,form=form,uslz=usl,admin=admin,cat=cat,cat2=cat2)
@@ -562,6 +563,7 @@ def users():
         x = request.form.get('rmadm')
         for user1 in User.query.filter_by(steam_id=x):
             [user1][0].admin = 0
+            g.user.admin = 0
             db_session.commit()
 
             output = render_template('apps/users.html',username=g.user,form=form,uslz=usl,admin=admin,cat=cat,cat2=cat2)
