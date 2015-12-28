@@ -285,10 +285,11 @@ def ap(ap):
     if 'user_id' in session:
         g.user = User.query.get(session['user_id'])
         if g.user:
-            admin = g.user.admin
-            mod = g.user.flag
-            div = g.user.div
-            voted = g.user.voted
+            for user1 in User.query.filter_by(steam_id=g.user.steam_id):
+                mod = [user1][0].flag
+                admin = [user1][0].admin
+                div = [user1][0].div
+                voted = [user1][0].voted
     pplz = User.query.filter_by(steam_id=ap)
     for user in pplz:
         gogo = user
