@@ -470,6 +470,17 @@ def ap(ap):
             db_session.commit()
             ulsz = ulist()
             output = render_template('apps/app.html',username=g.user,form=form,uslz=ulsz,gogo=gogo,admin=admin,mod=mod,div=div,voted=voted)
+    # if request.form.get('clrbtn'):
+    #     x = request.form.get('clrbtn')
+    #     voted = g.user.voted
+    #     for user1 in User.query.filter_by(steam_id=x):
+    #         [user1][0].voteno = 0
+    #         [user1][0].voteye = 0
+    #         g.user.voted = voted
+    #         db_session.commit()
+    #         ulsz = ulist()
+    #         output = render_template('apps/app.html',username=g.user,form=form,uslz=ulsz,gogo=gogo,admin=admin,mod=mod,div=div,voted=voted)
+
 
 
     return output
