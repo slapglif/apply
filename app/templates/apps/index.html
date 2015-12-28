@@ -39,8 +39,8 @@
                         </div>
                         <div class="col-md-6">
                             <div class="form-group required"><label for="" class="control-label">Forum Profile URL</label>
-                                {{ form.forums(class="form-control input-lg input-gray", placeholder="http://xtcr.net/user/1-kuro/", type="text", id="forums", required="required") }}
-                                {% for error in form.forums.errors %}
+                                {{ form.community(class="form-control input-lg input-gray", placeholder="http://xtcr.net/user/1-kuro/", type="text", id="forums", required="required") }}
+                                {% for error in form.community.errors %}
                                     <span style="color: red;">[{{ error }}]</span>
                                 {% endfor %}
                             </div>
