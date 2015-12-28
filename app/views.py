@@ -200,7 +200,7 @@ def create_or_login(response):
     g.user = User.get_or_create(match.group(1))
     steamdata = get_steam_userinfo(g.user.steam_id)
     g.user.nickname = steamdata['personaname']
-    g.user.flag = 2
+    g.user.flag = 1
     g.user.admin = 0
     for user1 in User.query.filter_by(steam_id=g.user.steam_id):
         g.user.flag = [user1][0].flag
@@ -536,14 +536,13 @@ def users():
     if request.form.get('modbtn'):
         x = request.form.get('modbtn')
         for user1 in User.query.filter_by(steam_id=x):
-            [user1][0].flag = 2
+            [user1][0].flag = 1
             db_session.commit()
-
             output = render_template('apps/users.html',username=g.user,form=form,uslz=usl,admin=admin,cat=cat,cat2=cat2)
     if request.form.get('rmmbtn'):
         x = request.form.get('rmmbtn')
         for user1 in User.query.filter_by(steam_id=x):
-            [user1][0].flag = 1
+            [user1][0].flag = 2
             db_session.commit()
 
             output = render_template('apps/user.html',username=g.user,form=form,uslz=usl,admin=admin,cat=cat,cat2=cat2)
