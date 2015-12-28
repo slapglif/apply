@@ -119,79 +119,22 @@
                     </label>
                     <hr/>
 
-                    <p class="form-legend">Describe yourself and your skillset</p>
+                    <p class="form-legend"> Why do you want to join?</p>
                     <div class="form-group required"><label for="" class="control-label">Bio</label><textarea name="bio"
                                                                                                               class="form-control input-lg input-gray"
-                                                                                                              placeholder="Cut and paste any additional information. Remember you can always edit it later."
+                                                                                                              placeholder="Don't say anything involving wanting admin"
                                                                                                               cols="30"
                                                                                                               rows="6"
                                                                                                               required="required"></textarea>
                     </div>
-                    <fieldset class="draggable margin-top-40" id="Disciplines">
-
-                    <fieldset id="skills1" class="margin-top-40">
-                        <div class="form-group required">
-                            <label for="" class="control-label">Input your top skills</label> <input
-                                type="text" name="tags" id="singleFieldTags2" class="ignore"
-                                placeholder="Art Director"/>
-
-                            <div id="skills-tags">
-                            </div>
-                            <div>
-                                <input type="hidden" name="skills" class="force-validate" value="" required=""
-                                       id="SkillSkill"/></div>
-                        </div>
-                    </fieldset>
-
-
-                    <hr>
-                    <div align="center">
-                        {{ form.submit(class="btn btn-lg btn-danger", role="button", id='sbtn') }}
+                                        <p class="form-legend"> What sets you apart from other people that might be applying?</p>
+                    <div class="form-group required"><label for="" class="control-label">Skills</label><textarea name="skills"
+                                                                                                              class="form-control input-lg input-gray"
+                                                                                                              placeholder="Cut and paste any additional information."
+                                                                                                              cols="15"
+                                                                                                              rows="6"
+                                                                                                              required="required"></textarea>
                     </div>
-
-                    <script>
-
-                        $('input:submit').click(function () {
-                            $('input:submit').attr("disabled", true);
-                        });
-                    </script>
-
-
-
-
-
-
-                {% else %}
-
-                    <p class="text-center lead text-gray margin-bottom-15">
-                        You already have an application pending!<br>
-                        Application status: <span
-                            class="{% if username.status == 'Pending' %}label label-default{% elif username.status == 'Under Review' %}label label-warning{% elif username.status == 'Approved' %}label label-success{% elif username.status == 'Denied' %}label label-danger{% endif %}">{{ username.status }}</span>
-                    </p>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                {% endif %}
-
-            {% else %}
-                <a class="landing-sign btn-main btn-sell btn-block btn btn-lg" href="/login" role="button"><i
-                        class="fa fa-steam"></i> You must be signed in to apply!</a>
-            {% endif %}
-            </div>
             </div>
 
             <script>
