@@ -546,7 +546,7 @@ def users():
             [user1][0].flag = 1
             db_session.commit()
 
-            output = render_template('apps/user.html',username=g.user,form=form,uslz=usl,admin=admin,cat=cat,cat2=cat2)
+            output = render_template('apps/users.html',username=g.user,form=form,uslz=usl,admin=admin,cat=cat,cat2=cat2)
     if request.form.get('adadm'):
         x = request.form.get('adadm')
         for user1 in User.query.filter_by(steam_id=x):
