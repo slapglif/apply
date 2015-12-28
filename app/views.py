@@ -433,6 +433,15 @@ def ap(ap):
             ulsz = ulist()
             output = render_template('apps/app.html',username=g.user,form=form,uslz=ulsz,gogo=gogo,admin=admin,mod=mod,div=div,voted=voted)
 
+    if request.form.get('dnyreqbtn'):
+        x = request.form.get('dnyreqbtn')
+        for user1 in User.query.filter_by(steam_id=x):
+            [user1][0].status = "Denied (Requirements Not Met)"
+            db_session.commit()
+            ulsz = ulist()
+            output = render_template('apps/app.html',username=g.user,form=form,uslz=ulsz,gogo=gogo,admin=admin,mod=mod,div=div,voted=voted)
+
+
     if request.form.get('voteyes'):
         x = request.form.get('voteyes')
         voted = g.user.voted
