@@ -68,7 +68,7 @@
                     {% endif %}</span>
 
                         {% if gogo.voteye or gogo.voteno %}
-                            {% if users.admin == 1 %}
+                            {% if gogo.admin == 1 %}
                                 <form action="/" method="POST">
                                 <button name="clrbtn" value="{{ users.steam_id }}" type="submit" class="label label-info">Clear Votes</button>
                                 </form>
