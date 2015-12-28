@@ -25,6 +25,7 @@ class User(Base):
     voted = Column(String())
     vflag = Column(Integer())
     rank = Column(String())
+    forums = Column(String())
 
 
 

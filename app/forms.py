@@ -8,6 +8,7 @@ class xForm(Form):
     community = StringField('community')
     email = StringField('email')
     age = StringField('name')
+    forums = StringField('forums')
     search = StringField('search')
 
     dd1 = SelectField('Rank', choices=[])
