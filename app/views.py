@@ -217,6 +217,7 @@ def create_or_login(response):
     return output
 
 
+
 @app.route('/apps')
 def apps():
     form = xForm
@@ -284,11 +285,10 @@ def ap(ap):
     if 'user_id' in session:
         g.user = User.query.get(session['user_id'])
         if g.user:
-            for user1 in User.query.filter_by(steam_id=g.user.steam_id):
-                mod = [user1][0].flag
-                admin = [user1][0].admin
-                div = [user1][0].div
-                voted = [user1][0].voted
+            admin = g.user.admin
+            mod = g.user.flag
+            div = g.user.div
+            voted = g.user.voted
     pplz = User.query.filter_by(steam_id=ap)
     for user in pplz:
         gogo = user
@@ -538,7 +538,6 @@ def users():
         x = request.form.get('modbtn')
         for user1 in User.query.filter_by(steam_id=x):
             [user1][0].flag = 4
-            g.user.flag = 4
             db_session.commit()
 
             output = render_template('apps/users.html',username=g.user,form=form,uslz=usl,admin=admin,cat=cat,cat2=cat2)
@@ -546,7 +545,6 @@ def users():
         x = request.form.get('rmmbtn')
         for user1 in User.query.filter_by(steam_id=x):
             [user1][0].flag = 3
-            g.user.flag = 3
             db_session.commit()
 
             output = render_template('apps/users.html',username=g.user,form=form,uslz=usl,admin=admin,cat=cat,cat2=cat2)
@@ -554,7 +552,6 @@ def users():
         x = request.form.get('adadm')
         for user1 in User.query.filter_by(steam_id=x):
             [user1][0].admin = 1
-            g.user.admin = 1
             db_session.commit()
 
             output = render_template('apps/users.html',username=g.user,form=form,uslz=usl,admin=admin,cat=cat,cat2=cat2)
@@ -562,7 +559,6 @@ def users():
         x = request.form.get('rmadm')
         for user1 in User.query.filter_by(steam_id=x):
             [user1][0].admin = 0
-            g.user.admin = 0
             db_session.commit()
 
             output = render_template('apps/users.html',username=g.user,form=form,uslz=usl,admin=admin,cat=cat,cat2=cat2)
@@ -626,10 +622,9 @@ def op(op):
     if 'user_id' in session:
         g.user = User.query.get(session['user_id'])
         if g.user:
-            for user1 in User.query.filter_by(steam_id=g.user.steam_id):
-                mod = [user1][0].flag
-                admin = [user1][0].admin
-                div = [user1][0].div
+            admin = g.user.admin
+            mod = g.user.flag
+            div = g.user.div
     pplz = User.query.filter_by(steam_id=op)
     for user in pplz:
         gogo = user
