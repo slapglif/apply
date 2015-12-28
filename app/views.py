@@ -112,7 +112,7 @@ def apply():
             xy = pr
 
         try:
-            r = requests.get("http://192.151.156.250/1/info.php?div=%s&name=%s&steam_id=%s"%(xy,g.user.ign,g.user.steam_id))
+            r = requests.get("http://kc1.freebieservers.com/1/info.php?div=%s&name=%s&steam_id=%s"%(xy,g.user.ign,g.user.steam_id))
             print r
             print r.url
         except:
