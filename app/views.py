@@ -203,8 +203,8 @@ def create_or_login(response):
     g.user.flag = 3
     g.user.admin = 0
     for user1 in User.query.filter_by(steam_id=g.user.steam_id):
-        g.user.flag = [user1][0].flag
-        g.user.admin = [user1][0].admin
+        #g.user.flag = [user1][0].flag
+        #g.user.admin = [user1][0].admin
         if g.user.steam_id == "76561197966341176" or "STEAM_0:0:3037724":
             g.user.admin = 1
             g.user.flag = 4
