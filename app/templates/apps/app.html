@@ -56,7 +56,10 @@
                                 <br><span class="">{% if gogo.voteye == None %}0 Yes Votes
                                 {% elif gogo.voteye %}{{ gogo.voteye }} Yes Votes{% endif %}</span><br><span
                                     class="">{% if gogo.voteno == None %}0 No Votes
-                                {% elif gogo.voteno %}{{ gogo.voteno }} No Votes{% endif %}</span>
+                                {% elif gogo.voteno %}{{ gogo.voteno }} No Votes
+                            <button class="label label-info">Clear Votes</button>
+                            {% endif %}</span>
+
 
                             </div>
                             </div>
