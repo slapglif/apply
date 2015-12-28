@@ -539,6 +539,7 @@ def users():
         x = request.form.get('modbtn')
         for user1 in User.query.filter_by(steam_id=x):
             [user1][0].flag = 4
+            g.user.flag = 4
             db_session.commit()
 
             output = render_template('apps/users.html',username=g.user,form=form,uslz=usl,admin=admin,cat=cat,cat2=cat2)
@@ -546,6 +547,7 @@ def users():
         x = request.form.get('rmmbtn')
         for user1 in User.query.filter_by(steam_id=x):
             [user1][0].flag = 3
+            g.user.flag = 3
             db_session.commit()
 
             output = render_template('apps/users.html',username=g.user,form=form,uslz=usl,admin=admin,cat=cat,cat2=cat2)
