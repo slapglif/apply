@@ -209,6 +209,7 @@ def create_or_login(response):
             g.user.admin = 1
             g.user.flag = 2
 
+
     print "%s is admin %s is flag"%(g.user.admin,g.user.flag)
     db_session.commit()
 
