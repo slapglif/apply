@@ -119,6 +119,7 @@
                     </label>
                     <hr/>
 
+
                     <p class="form-legend"> Why do you want to join?</p>
                     <div class="form-group required"><label for="" class="control-label">Bio</label><textarea name="bio"
                                                                                                               class="form-control input-lg input-gray"
@@ -135,6 +136,57 @@
                                                                                                               rows="6"
                                                                                                               required="required"></textarea>
                     </div>
+            </div>
+
+
+                    <hr>
+                    <div align="center">
+                        {{ form.submit(class="btn btn-lg btn-danger", role="button", id='sbtn') }}
+                    </div>
+
+                    <script>
+
+                        $('input:submit').click(function () {
+                            $('input:submit').attr("disabled", true);
+                        });
+                    </script>
+
+
+
+
+
+
+                {% else %}
+
+                    <p class="text-center lead text-gray margin-bottom-15">
+                        You already have an application pending!<br>
+                        Application status: <span
+                            class="{% if username.status == 'Pending' %}label label-default{% elif username.status == 'Under Review' %}label label-warning{% elif username.status == 'Approved' %}label label-success{% elif username.status == 'Denied' %}label label-danger{% endif %}">{{ username.status }}</span>
+                    </p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                {% endif %}
+
+            {% else %}
+                <a class="landing-sign btn-main btn-sell btn-block btn btn-lg" href="/login" role="button"><i
+                        class="fa fa-steam"></i> You must be signed in to apply!</a>
+            {% endif %}
+            </div>
             </div>
 
             <script>
