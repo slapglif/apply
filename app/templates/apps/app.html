@@ -51,7 +51,7 @@
                             <P>&nbsp;</P>
                             <div align="left">
                                 <dt>Status</dt>
-                                <span class="{% if gogo.status == 'Pending' %}label label-default{% elif gogo.status == 'Under Review' %}label label-warning{% elif gogo.status == 'Approved' %}label label-success{% elif gogo.status == 'Denied' %}label label-danger{% endif %}">{{ gogo.status }}</span>
+                                <span class="{% if gogo.status == 'Pending' %}label label-default{% elif gogo.status == 'Under Review' %}label label-warning{% elif gogo.status == 'Approved' %}label label-success{% elif 'Denied' in gogo.status %}label label-danger{% endif %}">{{ gogo.status }}</span>
                                 <br>
                                 <br><span class="">{% if gogo.voteye == None %}0 Yes Votes
                                 {% elif gogo.voteye %}{{ gogo.voteye }} Yes Votes{% endif %}</span><br><span
