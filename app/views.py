@@ -201,6 +201,8 @@ def create_or_login(response):
     steamdata = get_steam_userinfo(g.user.steam_id)
     g.user.nickname = steamdata['personaname']
     for user1 in User.query.filter_by(steam_id=g.user.steam_id):
+        g.user.flag = 0
+        g.user.admin = 0
         if g.user.flag and g.user.admin is not None:
             g.user.flag = [user1][0].flag
             g.user.admin = [user1][0].admin
@@ -318,7 +320,7 @@ def ap(ap):
         usl = divusl('Unturned')
         output = render_template('apps/apps.html',username=g.user,form=form,uslz=usl,mod=mod,div=div,voted=voted)
 
-    if ap in "chiv":
+    if ap in "chivalry":
         usl = divusl('Chivalry')
         output = render_template('apps/apps.html',username=g.user,form=form,uslz=usl,mod=mod,div=div,voted=voted)
 
