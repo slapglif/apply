@@ -54,7 +54,7 @@
                                         </td>
                                         <td>
                                             <form action="/apps/search" method="POST">
-                                            <button name="statbtn" type="submit" value="{{ users.status }}" class="{% if users.status == 'Pending' %}btn btn-default{% elif users.status == 'Under Review' %}btn btn-warning{% elif users.status == 'Approved' %}btn btn-success{% elif users.status == 'Denied' %}btn btn-danger{% endif %}">{{ users.status }}</button>
+                                            <button name="statbtn" type="submit" value="{{ users.status }}" class="{% if users.status == 'Pending' %}btn btn-default{% elif users.status == 'Under Review' %}btn btn-warning{% elif users.status == 'Approved' %}btn btn-success{% elif 'Denied' in users.status %}btn btn-danger{% endif %}">{{ users.status }}</button>
                                             </form>
                                         </td>
                                    </tr>
