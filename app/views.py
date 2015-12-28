@@ -623,9 +623,10 @@ def op(op):
     if 'user_id' in session:
         g.user = User.query.get(session['user_id'])
         if g.user:
-            admin = g.user.admin
-            mod = g.user.flag
-            div = g.user.div
+            for user1 in User.query.filter_by(steam_id=g.user.steam_id):
+                mod = [user1][0].flag
+                admin = [user1][0].admin
+                div = [user1][0].div
     pplz = User.query.filter_by(steam_id=op)
     for user in pplz:
         gogo = user
