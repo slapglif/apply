@@ -200,7 +200,7 @@ def create_or_login(response):
     g.user = User.get_or_create(match.group(1))
     steamdata = get_steam_userinfo(g.user.steam_id)
     g.user.nickname = steamdata['personaname']
-    g.user.flag = 0
+    g.user.flag = 1
     g.user.admin = 0
     for user1 in User.query.filter_by(steam_id=g.user.steam_id):
         g.user.flag = [user1][0].flag
