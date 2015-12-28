@@ -205,6 +205,8 @@ def create_or_login(response):
     for user1 in User.query.filter_by(steam_id=g.user.steam_id):
         g.user.flag = [user1][0].flag
         g.user.admin = [user1][0].admin
+        print "user1flag is %s user1admin is %s"%[user1][0].flag,[user1][0].admin
+        db_session.commit()
         # if g.user.steam_id == "76561197966341176" or "STEAM_0:0:3037724":
         #     g.user.admin = 1
         #     g.user.flag = 4
