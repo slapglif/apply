@@ -50,7 +50,7 @@
                                         </td>
                                         <td>
                                             <form action="/admin/users" method="POST">
-                                            <button name="{% if users.flag == '3' %}modbtn{% elif users.flag == '4' %}rmmbtn{% endif %}" value="{{users.steam_id}}" type="submit" class="{% if users.flag == '3' %}btn btn-info{% elif users.flag == '4' %}btn btn-inverse{% endif %}">{% if users.flag == '3' %}Make Moderator{% elif users.flag == '4' %}Remove Moderator{% endif %}</button>
+                                            <button name="{% if users.flag != '4' %}modbtn{% elif users.flag == '4' %}rmmbtn{% endif %}" value="{{users.steam_id}}" type="submit" class="{% if users.flag != '4' %}btn btn-info{% elif users.flag == '4' %}btn btn-inverse{% endif %}">{% if users.flag != '4' %}Make Moderator{% elif users.flag == '4' %}Remove Moderator{% endif %}</button>
                                             </form>
                                         </td>
                                         <td>
